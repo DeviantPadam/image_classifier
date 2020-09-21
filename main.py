@@ -14,6 +14,7 @@ from model import ImageClassifier
 import torch
 from torchvision import transforms
 from PIL import Image
+import shutil
 
 UPLOAD_FOLDER = "static/imgs"
 ALLOWED_EXTENSIONS = { 'png', 'jpg', 'jpeg'}
@@ -42,6 +43,10 @@ data_transforms = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
 
+def refresh():
+    shutil.rmtree('static/imgs/')
+    os.makedirs('static/imgs/')
+
 def get_prediction(image_bytes):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     tensor = data_transforms(image_bytes).view(1,3,224,224).to(device)
@@ -55,6 +60,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    refresh()
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
