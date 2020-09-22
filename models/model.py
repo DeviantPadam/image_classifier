@@ -12,9 +12,7 @@ import torch.optim as optim
 from torch.optim import lr_scheduler
 import torchvision
 from torchvision import datasets, models, transforms
-import matplotlib.pyplot as plt
 from PIL import Image, ImageFilter
-import numpy as np
 import tqdm.auto as tqdm
 import kornia
 
