@@ -9,4 +9,4 @@
 1. Run <code> export FLASK_APP=classifier </code>
 1. Then run <code> flask run </code>
 1. You will see something like this line in command line <code> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit) </code>
-1. Go to this link from browser and app will be there.
+1. Go to this given link from browser and app will be there.
